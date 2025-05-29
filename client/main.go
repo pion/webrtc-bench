@@ -8,7 +8,7 @@ import (
 	"os"
 	"time"
 
-	"github.com/pion/webrtc/v3"
+	"github.com/pion/webrtc/v4"
 )
 
 func newPeerConnection() {

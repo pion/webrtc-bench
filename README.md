@@ -1,10 +1,10 @@
 <h1 align="center">
   <a href="https://pion.ly"><img src="./.github/pion-gopher-webrtc.png" alt="Pion WebRTC" height="250px"></a>
   <br>
-  RTSP Bench
+  WebRTC Bench
   <br>
 </h1>
-<h4 align="center">RTSP Server that generates usage reports, Web/CLI Clients included!</h4>
+<h4 align="center">WebRTC Server that generates usage reports, Web/CLI Clients included!</h4>
 <p align="center">
   <a href="https://pion.ly"><img src="https://img.shields.io/badge/pion-webrtc-gray.svg?longCache=true&colorB=brightgreen" alt="Pion webrtc"></a>
   <a href="https://pion.ly/slack"><img src="https://img.shields.io/badge/join-us%20on%20slack-gray.svg?longCache=true&logo=slack&colorB=brightgreen" alt="Slack Widget"></a>
@@ -13,24 +13,21 @@
 </p>
 <br>
 
-`rtsp-bench` is a WebRTC server that pulls from an RTSP feed, and then re-distributes via WebRTC. It generates a `report.csv` with the CPU Usage and connected PeerConnection count.
+`webrtc-bench` is a WebRTC server that plays a video file from disk, and then re-distributes via WebRTC. It generates a `report.csv` with the CPU Usage and connected PeerConnection count.
 
 This repo contains a CLI WebRTC Client that will connect and perform the load test. This is done via a REST API hosted on `:8080/doSignaling`. You can also watch the video/load test via the web UI at `:8080/`,
 it connects via the same REST API as the CLI.
 
-This project heavily borrows from [RTSPtoWebRTC](https://github.com/deepch/RTSPtoWebRTC). If you are looking for a full featured application to deploy that is probably a better choice. It is driven by a config file and
-has proper error handling.
-
 ### Running
-* `export GO111MODULE=on`
-* `git clone https://github.com/pion/rtsp-bench.git`
-* `cd rtsp-bench/server`
+* `git clone https://github.com/pion/webrtc-bench.git`
+* `cd webrtc-bench/server`
+* `ffmpeg -i $INPUT_FILE -g 30 -b:v 2M input.ivf`
 * `go run main.go`
 
 You can then access the Web UI at [http://localhost:8080](http://localhost:8080). This requires a browser that supports H264, this repo doesn't do any error handling around signaling failures.
 
 You can also use the provided WebRTC CLI
-* `cd rtsp-bench/client`
+* `cd webrtc-bench/client`
 * `go run main.go localhost:8080`
 
 In the server folder you will have a `reports.csv` that looks like
@@ -54,7 +51,7 @@ The Y Axis is the CPU Usage, and the X Axis is the count of PeerConnections. Thi
 
 ### FAQ
 #### What codec/bitrate was being distributed
-H264 that is approximately 250 Kb/s. You can change that [here](https://github.com/pion/rtsp-bench/blob/c457c441237c2e58e3390c8175b53001ba6336d9/server/main.go#L124)
+This is controlled by what video you use. You can go as high (or low) as you want.
 
 #### What SRTP Cipher was used
 SRTP_AEAD_AES_128_GCM
