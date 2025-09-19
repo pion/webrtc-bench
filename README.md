@@ -7,7 +7,7 @@
 <h4 align="center">WebRTC Server that generates usage reports, Web/CLI Clients included!</h4>
 <p align="center">
   <a href="https://pion.ly"><img src="https://img.shields.io/badge/pion-webrtc-gray.svg?longCache=true&colorB=brightgreen" alt="Pion webrtc"></a>
-  <a href="https://pion.ly/slack"><img src="https://img.shields.io/badge/join-us%20on%20slack-gray.svg?longCache=true&logo=slack&colorB=brightgreen" alt="Slack Widget"></a>
+  <a href="https://discord.gg/PngbdqpFbt"><img src="https://img.shields.io/badge/join-us%20on%20discord-gray.svg?longCache=true&logo=discord&colorB=brightblue" alt="join us on Discord"></a> <a href="https://bsky.app/profile/pion.ly"><img src="https://img.shields.io/badge/follow-us%20on%20bluesky-gray.svg?longCache=true&logo=bluesky&colorB=brightblue" alt="Follow us on Bluesky"></a>
   <br>
   <a href="LICENSE"><img src="https://img.shields.io/badge/License-MIT-yellow.svg" alt="License: MIT"></a>
 </p>
@@ -64,10 +64,12 @@ Pion by design allows the user to specify what they want. We are distributing a 
 When setting up the PeerConnection you have full control of the RTP/RTCP pipelines, so users can add TWCC/NACK/FEC in a way that works for them.
 
 #### I want to talk about cool WebRTC stuff!
-Join the [Pion Slack](https://pion.ly/slack)
+Join the [Pion Discord](https://discord.gg/PngbdqpFbt)!
 
 ### Community
-Pion has an active community on the [Golang Slack](https://invite.slack.golangbridge.org/). Sign up and join the **#pion** channel for discussions and support. You can also use [Pion mailing list](https://groups.google.com/forum/#!forum/pion).
+Pion has an active community on the [Discord](https://discord.gg/PngbdqpFbt).
+
+Follow the [Pion Bluesky](https://bsky.app/profile/pion.ly) or [Pion Twitter](https://twitter.com/_pion) for project updates and important WebRTC news.
 
 We are always looking to support **your projects**. Please reach out if you have something to build!
 
