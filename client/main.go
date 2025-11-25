@@ -1,3 +1,6 @@
+// SPDX-FileCopyrightText: 2023 The Pion community <https://pion.ly>
+// SPDX-License-Identifier: MIT
+
 package main
 
 import (
@@ -17,7 +20,7 @@ func newPeerConnection() {
 		panic(err)
 	}
 
-	if _, err := peerConnection.AddTransceiverFromKind(webrtc.RTPCodecTypeVideo); err != nil {
+	if _, err = peerConnection.AddTransceiverFromKind(webrtc.RTPCodecTypeVideo); err != nil {
 		panic(err)
 	}
 
@@ -35,7 +38,7 @@ func newPeerConnection() {
 		panic(err)
 	}
 
-	resp, err := http.Post(fmt.Sprintf("http://%s/doSignaling", os.Args[1]), "application/json", bytes.NewReader(offerJSON))
+	resp, err := http.Post(fmt.Sprintf("http://%s/doSignaling", os.Args[1]), "application/json", bytes.NewReader(offerJSON)) // nolint: lll, noctx
 	if err != nil {
 		panic(err)
 	}
@@ -49,7 +52,9 @@ func newPeerConnection() {
 	if err = peerConnection.SetRemoteDescription(answer); err != nil {
 		panic(err)
 	}
-	resp.Body.Close()
+	if err = resp.Body.Close(); err != nil {
+		panic(err)
+	}
 }
 
 func main() {
