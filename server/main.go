@@ -1,3 +1,9 @@
+// SPDX-FileCopyrightText: 2023 The Pion community <https://pion.ly>
+// SPDX-License-Identifier: MIT
+
+//go:build !js
+// +build !js
+
 package main
 
 import (
@@ -16,14 +22,15 @@ import (
 	"github.com/shirou/gopsutil/v4/cpu"
 )
 
+// nolint: gochecknoglobals
 var (
 	outboundVideoTrack  *webrtc.TrackLocalStaticSample
 	peerConnectionCount int64
 )
 
-// Generate CSV with columns of timestamp, peerConnectionCount, and cpuUsage
+// Generate CSV with columns of timestamp, peerConnectionCount, and cpuUsage.
 func reportBuilder() {
-	file, err := os.OpenFile("report.csv", os.O_CREATE|os.O_WRONLY|os.O_TRUNC, 0644)
+	file, err := os.OpenFile("report.csv", os.O_CREATE|os.O_WRONLY|os.O_TRUNC, 0o644) // nolint: gosec
 	if err != nil {
 		panic(err)
 	}
@@ -39,25 +46,25 @@ func reportBuilder() {
 		} else if len(usage) != 1 {
 			panic(fmt.Sprintf("CPU Usage results should have 1 sample, have %d", len(usage)))
 		}
-		if _, err = fmt.Fprintf(file, "%s, %d, %f\n", time.Now().Format(time.RFC3339), atomic.LoadInt64(&peerConnectionCount), usage[0]); err != nil {
+		if _, err = fmt.Fprintf(file, "%s, %d, %f\n", time.Now().Format(time.RFC3339), atomic.LoadInt64(&peerConnectionCount), usage[0]); err != nil { // nolint: lll
 			panic(err)
 		}
 	}
 }
 
 // HTTP Handler that accepts an Offer and returns an Answer
-// adds outboundVideoTrack to PeerConnection
-func doSignaling(w http.ResponseWriter, r *http.Request) {
+// adds outboundVideoTrack to PeerConnection.
+func doSignaling(w http.ResponseWriter, r *http.Request) { // nolint: cyclop, varnamelen
 	peerConnection, err := webrtc.NewPeerConnection(webrtc.Configuration{})
 	if err != nil {
 		panic(err)
 	}
 
 	peerConnection.OnICEConnectionStateChange(func(connectionState webrtc.ICEConnectionState) {
-		switch connectionState {
+		switch connectionState { // nolint: exhaustive
 		case webrtc.ICEConnectionStateDisconnected, webrtc.ICEConnectionStateFailed:
-			if err := peerConnection.Close(); err != nil {
-				panic(err)
+			if closeErr := peerConnection.Close(); closeErr != nil {
+				panic(closeErr)
 			}
 		case webrtc.ICEConnectionStateClosed:
 			atomic.AddInt64(&peerConnectionCount, -1)
@@ -122,7 +129,7 @@ func main() {
 	http.HandleFunc("/doSignaling", doSignaling)
 
 	fmt.Println("Open http://localhost:8080 to access this demo")
-	panic(http.ListenAndServe(":8080", nil))
+	panic(http.ListenAndServe(":8080", nil)) // nolint: gosec
 }
 
 const videoFileName = "input.ivf"
