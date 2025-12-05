@@ -3,7 +3,7 @@ module github.com/pion/webrtc-bench
 go 1.24.0
 
 require (
-	github.com/pion/webrtc/v4 v4.1.6
+	github.com/pion/webrtc/v4 v4.1.7
 	github.com/shirou/gopsutil/v4 v4.25.11
 )
 
@@ -13,20 +13,20 @@ require (
 	github.com/google/uuid v1.6.0 // indirect
 	github.com/lufia/plan9stats v0.0.0-20211012122336-39d0f177ccd0 // indirect
 	github.com/pion/datachannel v1.5.10 // indirect
-	github.com/pion/dtls/v3 v3.0.7 // indirect
-	github.com/pion/ice/v4 v4.0.10 // indirect
-	github.com/pion/interceptor v0.1.41 // indirect
+	github.com/pion/dtls/v3 v3.0.8 // indirect
+	github.com/pion/ice/v4 v4.0.13 // indirect
+	github.com/pion/interceptor v0.1.42 // indirect
 	github.com/pion/logging v0.2.4 // indirect
-	github.com/pion/mdns/v2 v2.0.7 // indirect
+	github.com/pion/mdns/v2 v2.1.0 // indirect
 	github.com/pion/randutil v0.1.0 // indirect
-	github.com/pion/rtcp v1.2.15 // indirect
-	github.com/pion/rtp v1.8.23 // indirect
-	github.com/pion/sctp v1.8.40 // indirect
+	github.com/pion/rtcp v1.2.16 // indirect
+	github.com/pion/rtp v1.8.26 // indirect
+	github.com/pion/sctp v1.8.41 // indirect
 	github.com/pion/sdp/v3 v3.0.16 // indirect
-	github.com/pion/srtp/v3 v3.0.8 // indirect
-	github.com/pion/stun/v3 v3.0.0 // indirect
-	github.com/pion/transport/v3 v3.0.8 // indirect
-	github.com/pion/turn/v4 v4.1.1 // indirect
+	github.com/pion/srtp/v3 v3.0.9 // indirect
+	github.com/pion/stun/v3 v3.0.1 // indirect
+	github.com/pion/transport/v3 v3.1.1 // indirect
+	github.com/pion/turn/v4 v4.1.3 // indirect
 	github.com/power-devops/perfstat v0.0.0-20240221224432-82ca36839d55 // indirect
 	github.com/tklauser/go-sysconf v0.3.16 // indirect
 	github.com/tklauser/numcpus v0.11.0 // indirect
