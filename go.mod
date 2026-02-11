@@ -1,6 +1,6 @@
 module github.com/pion/webrtc-bench
 
-go 1.24.0
+go 1.24
 
 require (
 	github.com/pion/webrtc/v4 v4.2.3
