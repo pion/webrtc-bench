@@ -168,7 +168,12 @@ func newPeerConnection() { // nolint: cyclop
 	}
 
 	metrics.offerSent = time.Now()
-	resp, err := http.Post(fmt.Sprintf("http://%s/doSignaling", os.Args[1]), "application/json", bytes.NewReader(offerJSON)) // nolint: lll, noctx
+	// nolint:gosec,noctx
+	resp, err := http.Post(
+		fmt.Sprintf("http://%s/doSignaling", os.Args[1]),
+		"application/json",
+		bytes.NewReader(offerJSON),
+	)
 	if err != nil {
 		panic(err)
 	}
