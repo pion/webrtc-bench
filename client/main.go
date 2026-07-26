@@ -1,6 +1,7 @@
 // SPDX-FileCopyrightText: 2026 The Pion community <https://pion.ly>
 // SPDX-License-Identifier: MIT
 
+// webrtc-bench client for benchmarking WebRTC performance.
 package main
 
 import (
