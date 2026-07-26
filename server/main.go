@@ -3,6 +3,7 @@
 
 //go:build !js
 
+// webrtc-bench server for benchmarking WebRTC performance.
 package main
 
 import (
