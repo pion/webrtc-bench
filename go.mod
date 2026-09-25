@@ -3,7 +3,7 @@ module github.com/pion/webrtc-bench
 go 1.24.0
 
 require (
-	github.com/pion/webrtc/v4 v4.2.21
+	github.com/pion/webrtc/v4 v4.2.22
 	github.com/shirou/gopsutil/v4 v4.26.8
 )
 
